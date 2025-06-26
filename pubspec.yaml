@@ -1,0 +1,27 @@
+name: glassy_navbar
+description: A glassy-style customizable bottom navigation bar for Flutter.
+version: 0.0.1
+homepage: https://github.com/ammarayman/glassy_navbar 
+
+environment:
+  sdk: ">=3.7.2 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.2.0
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  # Uncomment and edit the below lines if you plan to include assets or fonts
+  assets:
+    - assets/
+  # fonts:
+  #   - family: CustomFont
+  #     fonts:
+  #       - asset: fonts/CustomFont-Regular.ttf
