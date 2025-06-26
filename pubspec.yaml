@@ -1,6 +1,6 @@
 name: glassy_navbar
 description: A glassy-style customizable bottom navigation bar for Flutter.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/AmmarAyman108/glassy_navbar.git 
 
 environment:
