@@ -6,7 +6,9 @@ A beautiful and customizable glassmorphic bottom navigation bar for Flutter apps
 
 ## 📸 Preview
 
-![preview](https://your_image_link_if_any.png)
+![Image](https://github.com/user-attachments/assets/b8eda6ef-393d-47d7-962b-4403d37ade3d)
+
+![Image](https://github.com/user-attachments/assets/2adb0ed9-c49f-4acc-8200-34496a93fb5c)
 
 ---
 
