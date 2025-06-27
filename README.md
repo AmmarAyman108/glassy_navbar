@@ -34,7 +34,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  glassy_navbar: ^0.0.4
+  glassy_navbar: ^0.0.6
 ```
 
 ---
@@ -51,7 +51,7 @@ dependencies:
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:glassy_navbar/src/glassy_navbar.dart';
+import 'package:glassy_navbar/glassy_navbar.dart';
 
 class BottomNavBarView extends StatefulWidget {
   const BottomNavBarView({super.key});
@@ -76,7 +76,6 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
   ];
 
   final List<Widget> screens = [
-    // add screens
     Container(),
     Container(),
     Container(),
