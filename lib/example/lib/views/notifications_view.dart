@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:glassy_navbar/example/lib/colors_manager.dart';
+import 'package:glassy_navbar/example/lib/theme/colors_manager.dart';
 
 class NotificationsView extends StatelessWidget {
   const NotificationsView({super.key});

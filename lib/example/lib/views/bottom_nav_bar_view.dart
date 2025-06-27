@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:glassy_navbar/example/lib/home_view.dart';
-import 'package:glassy_navbar/example/lib/notifications_view.dart';
-import 'package:glassy_navbar/example/lib/profile_view.dart';
-import 'package:glassy_navbar/example/lib/search_view.dart';
-import 'package:glassy_navbar/example/lib/settings_view.dart';
+import 'package:glassy_navbar/example/lib/views/home_view.dart';
+import 'package:glassy_navbar/example/lib/views/notifications_view.dart';
+import 'package:glassy_navbar/example/lib/views/profile_view.dart';
+import 'package:glassy_navbar/example/lib/views/search_view.dart';
+import 'package:glassy_navbar/example/lib/views/settings_view.dart';
 import 'package:glassy_navbar/src/glassy_navbar.dart';
 
 class BottomNavBarView extends StatefulWidget {
