@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:glassy_navbar/core/theme/colors_manager.dart';
+import 'package:glassy_navbar/example/lib/colors_manager.dart';
 
-class SettingsView extends StatelessWidget {
-  const SettingsView({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +10,12 @@ class SettingsView extends StatelessWidget {
       backgroundColor: ColorManager.primaryColor,
       appBar: AppBar(
         backgroundColor: ColorManager.primaryColor,
-        title: const Text('Settings'),
+        title: const Text('Profile'),
         foregroundColor: ColorManager.kWhiteColor,
       ),
       body: const Center(
         child: Text(
-          'Adjust your preferences',
+          'User Profile Info Here',
           style: TextStyle(color: ColorManager.kWhiteColor, fontSize: 20),
         ),
       ),

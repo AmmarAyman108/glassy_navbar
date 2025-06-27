@@ -6,9 +6,7 @@ A beautiful and customizable glassmorphic bottom navigation bar for Flutter apps
 
 ## 📸 Preview
 
-## 📸 Preview
-
-![preview](https://raw.githubusercontent.com/AmmarAyman108/glassy_navbar/main/ex1.png)
+![preview](https://raw.githubusercontent.com/AmmarAyman108/glassy_navbar/main/ex1.png)  
 ![preview](https://raw.githubusercontent.com/AmmarAyman108/glassy_navbar/main/ex2.png)
 
 ---
@@ -17,15 +15,17 @@ A beautiful and customizable glassmorphic bottom navigation bar for Flutter apps
 
 ✅ Fully customizable (icons, labels, colors, blur, opacity)  
 ✅ Supports custom SVG or standard Flutter icons  
-✅ Optional top border  
-✅ Works with `Stack` layout for proper glass effect  
-✅ Compatible with `flutter_svg`
+✅ Optional top border with custom style  
+✅ Blur effect using `BackdropFilter`  
+✅ Works well with `Stack` layout for layered glass effect  
+✅ Lightweight and easy to integrate  
+✅ Compatible with `flutter_svg` for SVG icons
 
 ---
 
 ## 🚀 Installation
 
-Add to `pubspec.yaml`:
+Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
@@ -36,116 +36,95 @@ dependencies:
 
 ## ⚙️ Usage
 
-> **Important:** Make sure to wrap the `GlassyNavBar` inside a `Stack` and align it to the bottom, **not** directly in `bottomNavigationBar`, to ensure the blur and layering works correctly.
+> **Important:**  
+> - Wrap the `GlassyNavBar` inside a `Stack`.  
+> - Set `resizeToAvoidBottomInset: false` in your `Scaffold`.  
+> - Do **not** use it in `bottomNavigationBar` to preserve the blur effect.
 
 ### ✅ Example
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:glassy_navbar/glassy_navbar.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:glassmorphic_nav_bar/glassmophic_nav_bar.dart';
 
-class MyApp extends StatelessWidget {
+class BottomNavBarView extends StatefulWidget {
+  const BottomNavBarView({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BottomNavBarExample(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  State<BottomNavBarView> createState() => _BottomNavBarViewState();
 }
 
-class BottomNavBarExample extends StatefulWidget {
-  @override
-  State<BottomNavBarExample> createState() => _BottomNavBarExampleState();
-}
+class _BottomNavBarViewState extends State<BottomNavBarView> {
+  int currentIndex = 0;
 
-class _BottomNavBarExampleState extends State<BottomNavBarExample> {
-  int _currentIndex = 0;
-
-  final List<Widget> _pages = const [
-    HomeView(),
-    SearchView(),
-    NotificationsView(),
-    ProfileView(),
-    SettingsView(),
-  ];
-
-  void _onNavItemTap(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  final List<GlassmorphicNavBarItem> _navBarItems = [
+  final List<GlassmorphicNavBarItem> navBarItems = [
     GlassmorphicNavBarItem(
-      useCustomIcon: true,
-      selectedIcon: SvgPicture.asset('assets/home_selected.svg'),
-      unselectedIcon: SvgPicture.asset('assets/home_unselected.svg'),
+      customUnselectedIcon: SvgPicture.asset('assets/home_unselected.svg'),
+      customSelectedIcon: SvgPicture.asset('assets/home_selected.svg'),
       label: 'Home',
     ),
-    GlassmorphicNavBarItem(
-      selectedIcon: Icon(Icons.search),
-      unselectedIcon: Icon(Icons.search_outlined),
-      label: 'Search',
-    ),
-    GlassmorphicNavBarItem(
-      selectedIcon: Icon(Icons.notifications),
-      unselectedIcon: Icon(Icons.notifications_none),
-      label: 'Notifications',
-    ),
-    GlassmorphicNavBarItem(
-      selectedIcon: Icon(Icons.person),
-      unselectedIcon: Icon(Icons.person_outline),
-      label: 'Profile',
-    ),
-    GlassmorphicNavBarItem(
-      selectedIcon: Icon(Icons.settings),
-      unselectedIcon: Icon(Icons.settings_outlined),
-      label: 'Settings',
-    ),
+    GlassmorphicNavBarItem(icon: Icons.search, label: 'Search'),
+    GlassmorphicNavBarItem(icon: Icons.notifications, label: 'Notifications'),
+    GlassmorphicNavBarItem(icon: Icons.person, label: 'Profile'),
+    GlassmorphicNavBarItem(icon: Icons.settings, label: 'Settings'),
+  ];
+
+ final List<Widget> screens =  [
+   Container(),
+   Container(),
+   Container(),
+   Container(),
+   Container(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
-          _pages[_currentIndex],
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: GlassmorphicNavBar(
-              currentIndex: _currentIndex,
-              onItemTap: _onNavItemTap,
-              items: _navBarItems,
-              navBarHeight: 80,
-              blurSigmaX: 4,
-              blurSigmaY: 7,
-              glassmorphicOpacity: 0.3,
-              backgroundColor: Color(0xFF00425C),
-              selectedIconTheme: IconThemeData(
-                color: Colors.cyan,
-                size: 26,
-              ),
-              unselectedIconTheme: IconThemeData(
-                color: Colors.white70,
-                size: 23,
-              ),
-              selectedLabelStyle: TextStyle(
-                color: Colors.cyan,
-                fontWeight: FontWeight.w600,
-                fontSize: 13,
-              ),
-              unselectedLabelStyle: TextStyle(
-                color: Colors.white70,
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
-              ),
+          screens[currentIndex],
+          GlassmorphicNavBar(
+            currentIndex: currentIndex,
+            onItemTap: onNavItemTap,
+            items: navBarItems,
+            backgroundColor: const Color(0xFF00425C),
+            blurSigma: 3,
+            height: 70,
+            opacity: 0.0,
+            showLabels: true,
+            selectedLabelStyle: const TextStyle(
+              color: Colors.blue,
+              fontSize: 12,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              color: Colors.white70,
+              fontSize: 12,
+            ),
+            selectedIconTheme: const IconThemeData(
+              color: Colors.blue,
+              size: 22,
+            ),
+            unselectedIconTheme: const IconThemeData(
+              color: Colors.white70,
+              size: 22,
+            ),
+            showTopBorder: true,
+            topBorderStyle: const TopBorderStyle(
+              color: Color.fromARGB(255, 0, 157, 255),
+              height: 1,
             ),
           ),
         ],
       ),
     );
+  }
+
+  void onNavItemTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
   }
 }
 ```
@@ -154,23 +133,28 @@ class _BottomNavBarExampleState extends State<BottomNavBarExample> {
 
 ## 🎨 Parameters
 
-| Parameter             | Description                             |
-|----------------------|-----------------------------------------|
-| `currentIndex`        | Index of the selected item              |
-| `onItemTap`           | Callback for item tap                   |
-| `items`               | List of `GlassmorphicNavBarItem`       |
-| `blurSigmaX/Y`        | Blur intensity                         |
-| `backgroundColor`     | Base color for the navbar              |
-| `glassmorphicOpacity` | Opacity of the background (default `0.3`) |
-| `selectedIconTheme`   | Icon style for selected item           |
-| `unselectedIconTheme` | Icon style for unselected items        |
-| `showLabels`          | Whether to show labels                 |
+| Parameter              | Description                                   |
+|------------------------|-----------------------------------------------|
+| `currentIndex`         | Index of the currently selected item          |
+| `onItemTap`            | Function to handle tap on item                |
+| `items`                | List of `GlassmorphicNavBarItem`              |
+| `blurSigma`            | Blur intensity of the glass effect            |
+| `backgroundColor`      | Base background color of the navbar           |
+| `height`               | Height of the navigation bar                  |
+| `opacity`              | Opacity of the background (0.0 = transparent) |
+| `showLabels`           | Whether to show labels below icons            |
+| `selectedLabelStyle`   | Text style for selected label                 |
+| `unselectedLabelStyle` | Text style for unselected labels              |
+| `selectedIconTheme`    | Icon theme for selected item                  |
+| `unselectedIconTheme`  | Icon theme for unselected items               |
+| `showTopBorder`        | Whether to show the top border                |
+| `topBorderStyle`       | Custom style for the top border               |
 
 ---
 
 ## 📦 Assets
 
-If you're using SVG icons, don't forget to declare them in your `pubspec.yaml`:
+If using custom SVG icons, declare them in `pubspec.yaml`:
 
 ```yaml
 flutter:
@@ -181,9 +165,58 @@ flutter:
 
 ---
 
-## 💡 Tip
+## ❗ Assertion Rules
 
-Use `glassmorphicOpacity = 0.0` for full transparency, or increase it for more solid background.
+To avoid runtime errors when using `GlassmorphicNavBarItem`, follow **one** of these valid setups:
+
+✅ Option 1 (Material icon):
+
+```dart
+GlassmorphicNavBarItem(
+  icon: Icons.home,
+  label: 'Home',
+);
+```
+
+✅ Option 2 (Custom icons):
+
+```dart
+GlassmorphicNavBarItem(
+  customUnselectedIcon: SvgPicture.asset('...'),
+  customSelectedIcon: SvgPicture.asset('...'),
+  label: 'Home',
+);
+```
+
+🚫 Do not mix both Material icons and custom icons. The following assertions will protect from misconfiguration:
+
+```dart
+assert(
+  customUnselectedIcon == null || customSelectedIcon != null,
+  '\n\ncustomSelectedIcon must also be provided\n',
+),
+assert(
+  customSelectedIcon == null || customUnselectedIcon != null,
+  '\n\ncustomUnselectedIcon must also be provided\n',
+),
+assert(
+  (icon != null && customUnselectedIcon == null && customSelectedIcon == null) ||
+  (icon == null && customUnselectedIcon != null && customSelectedIcon != null),
+  '\nError: Must provide either:\n'
+  '1. Just an icon (for Material icons) OR\n'
+  '2. Both customUnselectedIcon AND customSelectedIcon (for custom icons)\n'
+  'Do not mix both approaches.\n',
+);
+```
+
+---
+
+## 💡 Tips
+
+- Use `opacity: 0.0` for full glass feel.
+- Use inside a `Stack` for best visual layering.
+- Avoid placing over solid opaque containers.
+- Add animations or `Hero` transitions for smoother experience.
 
 ---
 

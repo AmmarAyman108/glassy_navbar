@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:glassy_navbar/core/theme/colors_manager.dart';
+import 'package:glassy_navbar/example/lib/colors_manager.dart';
 
-class SearchView extends StatelessWidget {
-  const SearchView({super.key});
+class NotificationsView extends StatelessWidget {
+  const NotificationsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,12 +10,12 @@ class SearchView extends StatelessWidget {
       backgroundColor: ColorManager.primaryColor,
       appBar: AppBar(
         backgroundColor: ColorManager.primaryColor,
-        title: const Text('Search'),
+        title: const Text('Notifications'),
         foregroundColor: ColorManager.kWhiteColor,
       ),
       body: const Center(
         child: Text(
-          'Find what you\'re looking for!',
+          'You have no new notifications.',
           style: TextStyle(color: ColorManager.kWhiteColor, fontSize: 20),
         ),
       ),

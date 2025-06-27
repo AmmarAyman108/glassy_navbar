@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'views/bottom_nav_bar_view.dart'; // Home screen
+import 'bottom_nav_bar_view.dart'; // Home screen
 
 void main() {
   runApp(const MyApp());
