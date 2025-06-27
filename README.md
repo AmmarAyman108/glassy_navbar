@@ -34,7 +34,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  glassy_navbar: ^0.0.3
+  glassy_navbar: ^0.0.4
 ```
 
 ---
