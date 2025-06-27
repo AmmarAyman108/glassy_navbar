@@ -1,10 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-class GlassmorphicNavBar extends StatelessWidget {
+class GlassyNavBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onItemTap;
-  final List<GlassmorphicNavBarItem> items;
+  final List<GlassyNavBarItem> items;
   final double blurSigma;
   final Color backgroundColor;
   final double height;
@@ -17,15 +17,15 @@ class GlassmorphicNavBar extends StatelessWidget {
   final bool showTopBorder;
   final TopBorderStyle topBorderStyle;
 
-  const GlassmorphicNavBar({
+  const GlassyNavBar({
     super.key,
     required this.currentIndex,
     required this.onItemTap,
     required this.items,
-    this.blurSigma = 3.0,
-    this.backgroundColor = const Color.fromARGB(255, 81, 81, 81),
+    this.blurSigma = 4,
+    this.backgroundColor = const Color.fromARGB(255, 0, 95, 116),
     this.height = 70.0,
-    this.opacity = 0.2,
+    this.opacity = 0.0,
     this.showLabels = true,
     TextStyle? selectedLabelStyle,
     TextStyle? unselectedLabelStyle,
@@ -124,7 +124,7 @@ class GlassContent extends StatelessWidget {
   final Color backgroundColor;
   final double height;
   final double opacity;
-  final List<GlassmorphicNavBarItem> items;
+  final List<GlassyNavBarItem> items;
   final int currentIndex;
   final bool showLabels;
   final TextStyle selectedLabelStyle;
@@ -160,7 +160,7 @@ class GlassContent extends StatelessWidget {
         ),
         child: DecoratedBox(
           decoration: BoxDecoration(
-            color: backgroundColor..withValues(alpha: opacity.clamp(0.0, 1.0)),
+            color: backgroundColor.withValues(alpha: opacity),
           ),
           child: SizedBox(
             height: height,
@@ -191,7 +191,7 @@ class GlassContent extends StatelessWidget {
 }
 
 class NavItem extends StatelessWidget {
-  final GlassmorphicNavBarItem item;
+  final GlassyNavBarItem item;
   final bool isSelected;
   final bool showLabels;
   final TextStyle selectedLabelStyle;
@@ -249,26 +249,24 @@ class NavItem extends StatelessWidget {
   }
 }
 
-class GlassmorphicNavBarItem {
+class GlassyNavBarItem {
   final IconData? icon;
   final String label;
   final Widget? customUnselectedIcon;
   final Widget? customSelectedIcon;
 
-  const GlassmorphicNavBarItem({
+  const GlassyNavBarItem({
     this.icon,
     required this.label,
     this.customUnselectedIcon,
     this.customSelectedIcon,
   }) : assert(
          customUnselectedIcon == null || customSelectedIcon != null,
-         '\n'
-         '\ncustomSelectedIcon must also be provided\n',
+         '\\n\\ncustomSelectedIcon must also be provided\\n',
        ),
        assert(
          customSelectedIcon == null || customUnselectedIcon != null,
-         '\n'
-         '\ncustomUnselectedIcon must also be provided\n',
+         '\\n\\ncustomUnselectedIcon must also be provided\\n',
        ),
        assert(
          (icon != null &&
@@ -277,10 +275,10 @@ class GlassmorphicNavBarItem {
              (icon == null &&
                  customUnselectedIcon != null &&
                  customSelectedIcon != null),
-         '\nError: Must provide either:\n'
-         '1. Just an icon (for Material icons) OR\n'
-         '2. Both customUnselectedIcon AND customSelectedIcon (for custom icons)\n'
-         'Do not mix both approaches.\n',
+         '\\nError: Must provide either:\\n'
+         '1. Just an icon (for Material icons) OR\\n'
+         '2. Both customUnselectedIcon AND customSelectedIcon (for custom icons)\\n'
+         'Do not mix both approaches.\\n',
        );
 }
 

@@ -6,8 +6,13 @@ A beautiful and customizable glassmorphic bottom navigation bar for Flutter apps
 
 ## 📸 Preview
 
-![preview](https://raw.githubusercontent.com/AmmarAyman108/glassy_navbar/main/ex1.png)  
 ![preview](https://raw.githubusercontent.com/AmmarAyman108/glassy_navbar/main/ex2.png)
+
+
+## 📸 Preview
+
+![preview](https://raw.githubusercontent.com/AmmarAyman108/glassy_navbar/main/ex1.png)  
+
 
 ---
 
@@ -46,7 +51,7 @@ dependencies:
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:glassmorphic_nav_bar/glassmophic_nav_bar.dart';
+import 'package:glassy_navbar/src/glassy_navbar.dart';
 
 class BottomNavBarView extends StatefulWidget {
   const BottomNavBarView({super.key});
@@ -58,24 +63,25 @@ class BottomNavBarView extends StatefulWidget {
 class _BottomNavBarViewState extends State<BottomNavBarView> {
   int currentIndex = 0;
 
-  final List<GlassmorphicNavBarItem> navBarItems = [
-    GlassmorphicNavBarItem(
+  final List<GlassyNavBarItem> navBarItems = [
+    GlassyNavBarItem(
       customUnselectedIcon: SvgPicture.asset('assets/home_unselected.svg'),
       customSelectedIcon: SvgPicture.asset('assets/home_selected.svg'),
       label: 'Home',
     ),
-    GlassmorphicNavBarItem(icon: Icons.search, label: 'Search'),
-    GlassmorphicNavBarItem(icon: Icons.notifications, label: 'Notifications'),
-    GlassmorphicNavBarItem(icon: Icons.person, label: 'Profile'),
-    GlassmorphicNavBarItem(icon: Icons.settings, label: 'Settings'),
+    const GlassyNavBarItem(icon: Icons.search, label: 'Search'),
+    const GlassyNavBarItem(icon: Icons.notifications, label: 'Notifications'),
+    const GlassyNavBarItem(icon: Icons.person, label: 'Profile'),
+    const GlassyNavBarItem(icon: Icons.settings, label: 'Settings'),
   ];
 
- final List<Widget> screens =  [
-   Container(),
-   Container(),
-   Container(),
-   Container(),
-   Container(),
+  final List<Widget> screens = [
+    // add screens
+    Container(),
+    Container(),
+    Container(),
+    Container(),
+    Container(),
   ];
 
   @override
@@ -85,7 +91,7 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
       body: Stack(
         children: [
           screens[currentIndex],
-          GlassmorphicNavBar(
+          GlassyNavBar(
             currentIndex: currentIndex,
             onItemTap: onNavItemTap,
             items: navBarItems,
@@ -127,6 +133,8 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
     });
   }
 }
+
+
 ```
 
 ---
