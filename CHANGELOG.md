@@ -1,3 +1,13 @@
+## [0.0.8] - 2025-06-27
+### ✨ Enhancements
+- Fix minor issues
+- Enhance opacity behavior
+- Improve layout and assertion validations
+## [0.0.7] - 2025-06-27
+### ✨ Enhancements
+- Fix minor issues
+- Enhance opacity behavior
+- Improve layout and assertion validations
 ## [0.0.6] - 2025-06-27
 ### ✨ Enhancements
 - Fix minor issues

@@ -25,7 +25,7 @@ class GlassyNavBar extends StatelessWidget {
     this.blurSigma = 4,
     this.backgroundColor = const Color.fromARGB(255, 0, 95, 116),
     this.height = 70.0,
-    this.opacity = 0.0,
+    this.opacity = 0.2,
     this.showLabels = true,
     TextStyle? selectedLabelStyle,
     TextStyle? unselectedLabelStyle,
@@ -45,17 +45,14 @@ class GlassyNavBar extends StatelessWidget {
            const TextStyle(
              fontSize: 12.0,
              fontWeight: FontWeight.w600,
-             color: Color.fromARGB(255, 168, 168, 168),
+             color: Color(0xFFCCCCCC),
            ),
        selectedIconTheme =
            selectedIconTheme ??
            const IconThemeData(color: Colors.blue, size: 24.0),
        unselectedIconTheme =
            unselectedIconTheme ??
-           const IconThemeData(
-             color: Color.fromARGB(255, 168, 168, 168),
-             size: 24.0,
-           ),
+           const IconThemeData(color: Color(0xFFCCCCCC), size: 24.0),
        assert(items.length >= 2, 'At least two items are required');
 
   @override
@@ -66,17 +63,17 @@ class GlassyNavBar extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: SizedBox(
-            height: height + (showTopBorder ? topBorderStyle.height : 0.0),
+            height: height + (showTopBorder ? topBorderStyle.thickness : 0.0),
             child: Stack(
               clipBehavior: Clip.none,
               children: [
                 if (showTopBorder)
                   TopBorder(
-                    height: topBorderStyle.height,
+                    height: topBorderStyle.thickness,
                     color: topBorderStyle.color,
                   ),
                 Positioned.fill(
-                  top: showTopBorder ? topBorderStyle.height : 0.0,
+                  top: showTopBorder ? topBorderStyle.thickness : 0.0,
                   child: GlassContent(
                     blurSigma: blurSigma,
                     backgroundColor: backgroundColor,
@@ -284,10 +281,10 @@ class GlassyNavBarItem {
 
 class TopBorderStyle {
   final Color color;
-  final double height;
+  final double thickness;
 
   const TopBorderStyle({
     this.color = const Color(0xFF00A6E8),
-    this.height = 1.0,
+    this.thickness = 1.0,
   });
 }

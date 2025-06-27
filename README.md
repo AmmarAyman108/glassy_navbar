@@ -34,7 +34,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  glassy_navbar: ^0.0.6
+  glassy_navbar: ^0.0.7
 ```
 
 ---
@@ -118,7 +118,7 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
             showTopBorder: true,
             topBorderStyle: const TopBorderStyle(
               color: Color.fromARGB(255, 0, 157, 255),
-              height: 1,
+              thickness: 1,
             ),
           ),
         ],

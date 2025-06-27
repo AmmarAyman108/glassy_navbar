@@ -51,14 +51,14 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
             backgroundColor: const Color(0xFF00425C),
             blurSigma: 3,
             height: 70,
-            opacity: 0.0,
+            opacity: 0.2,
             showLabels: true,
             selectedLabelStyle: const TextStyle(
               color: Colors.blue,
               fontSize: 12,
             ),
             unselectedLabelStyle: const TextStyle(
-              color: Colors.white70,
+              color: Color(0xFFCCCCCC),
               fontSize: 12,
             ),
             selectedIconTheme: const IconThemeData(
@@ -66,13 +66,13 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
               size: 22,
             ),
             unselectedIconTheme: const IconThemeData(
-              color: Colors.white70,
+              color: Color(0xFFCCCCCC),
               size: 22,
             ),
             showTopBorder: true,
             topBorderStyle: const TopBorderStyle(
-              color: Color.fromARGB(255, 0, 157, 255),
-              height: 1,
+              color: Colors.blue,
+              thickness: 1,
             ),
           ),
         ],
